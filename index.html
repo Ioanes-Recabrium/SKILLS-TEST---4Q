@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f2f2f2;
+      font-family: Arial;
+    }
+
+    .card {
+      background: rgb(30, 101, 194);
+      padding: 30px;
+      width: 280px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 20px;
+      background: #eee;
+      text-align: center;
+      outline: none;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #00bcd4;
+      color: rgb(12, 1, 1);
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background: gray;
+      cursor: not-allowed;
+    }
+
+    #msg {
+      margin-top: 10px;
+      font-size: 14px;
+      color: red;
+      text-align: center;
+    }
+  </style>
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #050101;
+            background-image: url('MainBG.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; 
+            left: 0;
+            height: 100%; 
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            background: rgb(18, 33, 72);
+            row-gap: 20px; 
+        }
+
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        nav img.nav-icon { width: 40px; height: auto; margin-right: 8px; }
+
+        h1, h2, h3 { 
+            margin-left: 300px;
+        }
+        
+        h1 {
+            background-color: #32457e;
+            color: #000000;
+            padding: 25px;
+            border-radius: 25px;
+            text-align: center;
+            width: 445px;
+            border: 2px solid #ffffff;
+        }
+        h2, h3 {
+            color: #000000;
+            text-align: center;
+            margin-left: 15px;
+        }
+
+        .clipboard {
+            margin-top: -65px;
+            margin-left: 250px;  
+            height: 1000px;    
+            background-image: url('clipboard.png'); 
+            background-size: 1100px auto; 
+            background-repeat: no-repeat;
+            padding-top: 140px;
+            padding-left: 400px; 
+            color: rgb(18, 33, 72);
+          
+        }
+
+        .mainlist {
+            font-size: 18px;
+            margin: 5px;
+            padding: 0;
+            max-width: 420px; 
+        }
+
+        .dashboardheaders { font-weight: bold; margin-top: 15px; font-size: 20px; }
+        .sublist { margin-bottom: 15px; }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Login</h2>
+
+  <input type="text" id="user" placeholder="Username">
+  <input type="password" id="pass" placeholder="Password">
+
+  <div class="row">
+    <input type="checkbox"> <span>Stay logged in</span>
+  </div>
+
+<button onclick="login()">Login</button>
+
+  <div id="msg"></div>
+</div>
+
+<script>
+  let attempts = 0;
+  let locked = false;
+
+  function login() {
+    if (locked) return;
+
+    let username = document.getElementById("user").value;
+    let password = document.getElementById("pass").value;
+    let msg = document.getElementById("msg");
+
+    if (username === "admin" && password === "1234") {
+      msg.style.color = "green";
+      msg.textContent = "Login successful";
+      attempts = 0;
+      window.location.replace("notebooks.html");
+    } else {
+      attempts++;
+      msg.style.color = "red";
+      msg.textContent = "Wrong username or password";
+
+      if (attempts >= 3) {
+        lockLogin();
+      }
+    }
+  }
+
+  function lockLogin() {
+    locked = true;
+    let msg = document.getElementById("msg");
+    let button = document.querySelector("button");
+
+    button.disabled = true;
+    msg.textContent = "Too many attempts. Try again in 30 seconds.";
+
+    setTimeout(() => {
+      locked = false;
+      attempts = 0;
+      button.disabled = false;
+      msg.textContent = "";
+    }, 30000);
+  }
+</script>
+
+</body>
+</html>

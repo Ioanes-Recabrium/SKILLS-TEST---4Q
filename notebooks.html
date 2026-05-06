@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #ffffff;
+            background-image: url('MainBG.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; 
+            left: 0;
+            height: 100%; 
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            background: rgb(18, 33, 72);
+            row-gap: 20px; 
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        nav img.nav-icon { width: 40px; height: auto; margin-right: 8px; }
+
+        h1, h2, h3 { 
+            margin-left: 300px;
+        }
+        
+        h1 {
+            background-color: #32457e;
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 25px;
+            width: 445px;
+            border: 2px solid #ffffff;
+        }
+        h2, h3 {
+            color: #ffffff;
+            text-align: center;
+            margin-left: 95px;
+        }
+
+        .mainlist {
+            font-size: 18px;
+            margin: 5px;
+            padding: 0;
+            max-width: 420px; 
+        }
+        .dashboardheaders { font-weight: bold; margin-top: 15px; font-size: 20px; }
+        .sublist { margin-bottom: 15px; }
+        .notebook-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-left: 300px;
+            padding: 40px;
+        }
+
+        .notebook-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .notebook-item:hover {
+            transform: scale(1.12) translateY(-8px);
+        }
+
+        .notebook-item img {
+            width: 300px;
+            height: auto;
+        }
+
+        .notebook-item span {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="OBlogo.png" style="width: 165px; height: auto; align-self: center; margin-bottom: 10px;">
+        <b><a href="dashboard.html" style="background-color:rgb(18, 33, 72); width: 250px;padding-top: 25px;padding-bottom: 25px;border-radius: 25px;"><img class="nav-icon" src="DashboardIcon.png">Dashboard</a></b>
+        <b><a href="task.html"><img class="nav-icon" src="TaskIcon.png">Tasks</a></b>
+        <b><a href="notebook.html"><img class="nav-icon" src="NotebookIcon.png">Notebook</a></b>
+        <b><a href="profile.html"><img class="nav-icon" src="ProfileIcon.png">Your Profile</a></b>
+        <b><a href="index.html"><img class="nav-icon" src="LogoutIcon.png">Logout</a></b>
+    </nav>
+
+    <h1>Welcome to the Notebooks!</h1>
+    <h2>Information and Communications Technology</h2>
+
+    <div class="notebook-grid">
+        <a class="notebook-item">
+            <img src="notebook.png">
+            <span>English</span>
+        </a>
+        <a class="notebook-item">
+            <img src="notebook.png">
+            <span>Science</span>
+        </a>
+        <a class="notebook-item">
+            <img src="notebook.png">
+            <span>Math</span>
+        </a>
+    </div>    
+</body>
+</html>
